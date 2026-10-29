@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUI_PAssword.EntryPage">
+
+    <ScrollView>
+        <VerticalStackLayout MaximumWidthRequest="720" Padding="20,16" Spacing="14">
+
+            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                <Button Text="Назад" Style="{StaticResource Outline}" Clicked="OnBackClicked" />
+                <Label Grid.Column="1" x:Name="Heading" Style="{StaticResource Title}" VerticalOptions="Center" />
+                <Button Grid.Column="2" Text="Зберегти" Clicked="OnSaveClicked" />
+            </Grid>
+
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Назва" Style="{StaticResource Caption}" />
+                <Border Padding="12,0"><Entry x:Name="NameBox" /></Border>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Посилання" Style="{StaticResource Caption}" />
+                <Border Padding="12,0"><Entry x:Name="UrlBox" Keyboard="Url" Placeholder="https://" /></Border>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Пароль" Style="{StaticResource Caption}" />
+                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                    <Border Padding="12,0">
+                        <Entry x:Name="PasswordBox" IsPassword="True" />
+                    </Border>
+                    <Button Grid.Column="1" x:Name="ToggleButton" Text="Показати"
+                            Style="{StaticResource Outline}" Clicked="OnToggleClicked" />
+                </Grid>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Теги (через кому)" Style="{StaticResource Caption}" />
+                <Border Padding="12,0">
+                    <Entry x:Name="TagsBox" TextChanged="OnTagsChanged" />
+                </Border>
+                <FlexLayout x:Name="TagSuggestions" Wrap="Wrap" Margin="0,6,0,0" />
+            </VerticalStackLayout>
+
+            <Border Style="{StaticResource Card}">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Генератор" FontFamily="OpenSansSemibold" />
+
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                        <Label Text="Довжина" VerticalOptions="Center" />
+                        <Slider Grid.Column="1" x:Name="LengthSlider" Minimum="8" Maximum="64" Value="16"
+                                ValueChanged="OnLengthChanged" />
+                        <Label Grid.Column="2" x:Name="LengthLabel" Text="16" WidthRequest="28"
+                               HorizontalTextAlignment="End" VerticalOptions="Center" />
+                    </Grid>
+
+                    <FlexLayout x:Name="Options" Wrap="Wrap" />
+
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                        <Label x:Name="EntropyLabel" Style="{StaticResource Caption}" VerticalOptions="Center" />
+                        <Button Grid.Column="1" Text="Згенерувати" Clicked="OnGenerateClicked" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Button x:Name="DeleteButton" Text="Видалити" Style="{StaticResource Danger}"
+                    IsVisible="False" Clicked="OnDeleteClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

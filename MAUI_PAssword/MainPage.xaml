@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUI_PAssword.MainPage">
+
+    <Grid MaximumWidthRequest="720" Padding="20,16" RowSpacing="12"
+          RowDefinitions="Auto,Auto,Auto,*">
+
+        <Grid ColumnDefinitions="*,Auto">
+            <Label Text="Паролі" Style="{StaticResource Title}" VerticalOptions="Center" />
+            <Button Grid.Column="1" Text="Додати" Clicked="OnAddClicked" />
+        </Grid>
+
+        <Border Grid.Row="1" Padding="12,0">
+            <Entry x:Name="SearchBox" Placeholder="Пошук" TextChanged="OnSearchChanged" />
+        </Border>
+
+        <FlexLayout Grid.Row="2" x:Name="TagBar" Wrap="Wrap" />
+
+        <Grid Grid.Row="3">
+            <CollectionView x:Name="List" SelectionMode="Single" SelectionChanged="OnSelected">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="8" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Style="{StaticResource Card}">
+                            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                                <VerticalStackLayout Spacing="2">
+                                    <Label Text="{Binding Name}" FontFamily="OpenSansSemibold" FontSize="15" />
+                                    <Label Text="{Binding Url}" Style="{StaticResource Caption}"
+                                           LineBreakMode="TailTruncation" />
+                                    <FlexLayout BindableLayout.ItemsSource="{Binding Tags}" Wrap="Wrap" Margin="0,6,0,0">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate x:DataType="x:String">
+                                                <Label Text="{Binding ., StringFormat='#{0}'}"
+                                                       Style="{StaticResource Caption}" Margin="0,0,8,0" />
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </FlexLayout>
+                                </VerticalStackLayout>
+                                <Button Grid.Column="1" Text="Копіювати" Style="{StaticResource Outline}"
+                                        VerticalOptions="Center" Clicked="OnCopyClicked" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label x:Name="EmptyLabel" Text="Записів немає" Style="{StaticResource Caption}"
+                   HorizontalOptions="Center" VerticalOptions="Start" Margin="0,40,0,0" IsVisible="False" />
+        </Grid>
+
+        <Label Grid.Row="3" x:Name="Toast" Style="{StaticResource Caption}" Opacity="0"
+               HorizontalOptions="Center" VerticalOptions="End" />
+    </Grid>
+</ContentPage>

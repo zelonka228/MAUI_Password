@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- Світла тема -->
+    <Color x:Key="BgLight">#FFFFFF</Color>
+    <Color x:Key="SurfaceLight">#F6F6F6</Color>
+    <Color x:Key="LineLight">#E3E3E3</Color>
+    <Color x:Key="TextLight">#111111</Color>
+    <Color x:Key="MutedLight">#707070</Color>
+    <Color x:Key="AccentLight">#111111</Color>
+    <Color x:Key="OnAccentLight">#FFFFFF</Color>
+
+    <!-- Темна тема -->
+    <Color x:Key="BgDark">#121212</Color>
+    <Color x:Key="SurfaceDark">#1B1B1B</Color>
+    <Color x:Key="LineDark">#2F2F2F</Color>
+    <Color x:Key="TextDark">#F0F0F0</Color>
+    <Color x:Key="MutedDark">#9A9A9A</Color>
+    <Color x:Key="AccentDark">#F0F0F0</Color>
+    <Color x:Key="OnAccentDark">#121212</Color>
+
+    <Color x:Key="Danger">#C0392B</Color>
+</ResourceDictionary>
